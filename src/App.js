@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor() {
     super();
 
-    this.students = [];
+    this.students = new Map();
     this.total = 0;
 
     this.state = {
@@ -22,7 +22,8 @@ class App extends React.Component {
 
   addStudent() {
     this.total += 1;
-    this.students.push(
+    this.students.set(
+      this.total,
       <Person key={this.total} id={this.total} func={this.remStudent} />
     );
     this.setState({
@@ -31,8 +32,10 @@ class App extends React.Component {
   }
 
   remStudent(id) {
-    console.log(id);
-    this.students.splice(id - 1, 1);
+    if (id == 1) {
+      this.total = 0;
+    }
+    this.students.delete(id);
     this.setState({
       showdata: this.students,
     });
@@ -48,7 +51,9 @@ class App extends React.Component {
         >
           Add
         </button>
-        <div id="display-data-Container">{this.students}</div>
+        <div id="display-data-Container">
+          {Array.from(this.students.values())}
+        </div>
       </div>
     );
   }
