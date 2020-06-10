@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import "../App.css";
 
 import Person from "../components/Person";
+import TotalDisplay from "./TotalDisplay";
 
 class FormContainer extends Component {
   constructor() {
@@ -20,6 +22,8 @@ class FormContainer extends Component {
 
   addStudent() {
     this.total += 1;
+    console.log("I am in addStudent:");
+    console.log(this.total);
     this.students.set(
       this.total,
       <Person key={this.total} id={this.total} func={this.remStudent} />
@@ -30,9 +34,9 @@ class FormContainer extends Component {
   }
 
   remStudent(id) {
-    if (id == 1) {
-      this.total = 0;
-    }
+    this.total -= 1;
+    console.log("I am in remStudent:");
+    console.log(this.total);
     this.students.delete(id);
     this.setState({
       showdata: this.students,
@@ -42,15 +46,20 @@ class FormContainer extends Component {
   render() {
     return (
       <div id="mainContainer" className="App">
-        <button
-          className="btn btn-primary btn-lg btn-block"
-          onClick={this.addStudent}
-          value="Append"
-        >
-          Add
-        </button>
-        <div id="display-data-Container">
-          {Array.from(this.students.values())}
+        <div className="col">
+          <TotalDisplay sum={this.total} />
+        </div>
+        <div className="col">
+          <button
+            className="btn btn-primary btn-lg btn-block"
+            onClick={this.addStudent}
+            value="Append"
+          >
+            Add
+          </button>
+          <div id="display-data-Container">
+            {Array.from(this.students.values())}
+          </div>
         </div>
       </div>
     );
