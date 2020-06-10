@@ -1,13 +1,14 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./style.css";
-import FormContainer from "./components/FormContainer";
+import InputForm from "./screens/InputForm";
+import Grouped from "./screens/Grouped";
 
 function App() {
   return (
     <div>
-      <header className="App-header">Buddy System Pairing</header>
-      <FormContainer />
+      <InputForm />
     </div>
   );
 }
