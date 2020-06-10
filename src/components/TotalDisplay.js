@@ -8,6 +8,7 @@ function TotalDisplay(props) {
       <h5 className="m-4">
         {participants > 0 ? "Total Participants: " + participants : ""}
       </h5>
+      <div>{props.data}</div>
     </div>
   );
 }

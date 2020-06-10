@@ -51,19 +51,22 @@ class FormContainer extends Component {
   render() {
     return (
       <div id="mainContainer" className="App">
-        <div>
-          <button
-            className="btn btn-primary btn-lg btn-block"
-            onClick={this.addStudent}
-            value="Append"
-          >
-            Add
-          </button>
-        </div>
-        <div>
-          <TotalDisplay sum={this.total} />
-        </div>
-        <div>{Array.from(this.students.values())}</div>
+        <button
+          className="btn btn-primary btn-lg btn-block"
+          onClick={this.addStudent}
+          value="Append"
+        >
+          Add
+        </button>
+
+        <TotalDisplay
+          sum={this.total}
+          data={Array.from(this.students.values())}
+        />
+
+        <button className="btn btn-success btn-lg btn-block mt-4">
+          Submit
+        </button>
       </div>
     );
   }
