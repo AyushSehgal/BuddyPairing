@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 import Person from "./components/Person";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
@@ -43,9 +44,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="mainContainer">
+      <div id="mainContainer" className="App">
         <button
-          className="btn-primary"
+          className="btn btn-primary btn-lg btn-block"
           onClick={this.addStudent}
           value="Append"
         >
