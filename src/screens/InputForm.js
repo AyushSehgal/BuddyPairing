@@ -6,7 +6,6 @@ import FormContainer from "../components/FormContainer";
 function InputForm() {
   return (
     <div>
-      <header className="App-header">Buddy System Pairing</header>
       <FormContainer />
     </div>
   );

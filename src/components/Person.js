@@ -10,6 +10,12 @@ export default class Person extends Component {
       grade: "",
     };
     this.handleChange = this.handleChange.bind(this);
+    this.sendData = this.sendData.bind(this);
+  }
+
+  sendData() {
+    console.log("CALLED");
+    this.props.callback(this.state);
   }
 
   handleChange(event) {
@@ -17,6 +23,8 @@ export default class Person extends Component {
     this.setState({
       [name]: value,
     });
+    this.sendData();
+    console.log("PERSON");
     console.log(this.state);
   }
 
@@ -52,6 +60,7 @@ export default class Person extends Component {
         >
           Delete
         </button>
+        <button onClick={this.sendData}>TEST</button>
       </div>
     );
   }
