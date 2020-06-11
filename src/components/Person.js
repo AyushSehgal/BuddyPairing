@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import App from "../App";
 import "bootstrap/dist/css/bootstrap.css";
 
 export default class Person extends Component {
@@ -14,7 +13,6 @@ export default class Person extends Component {
   }
 
   sendData() {
-    console.log("CALLED");
     this.props.callback(this.state);
   }
 
@@ -24,8 +22,6 @@ export default class Person extends Component {
       [name]: value,
     });
     this.sendData();
-    console.log("PERSON");
-    console.log(this.state);
   }
 
   render() {
