@@ -4,7 +4,7 @@ import "../style.css";
 
 import Person from "../components/Person";
 import TotalDisplay from "./TotalDisplay";
-import DisplayData from "./DisplayData";
+import DataDisplay from "./DisplayData";
 
 class FormContainer extends Component {
   constructor() {
@@ -13,7 +13,6 @@ class FormContainer extends Component {
     this.addStudent = this.addStudent.bind(this);
     this.remStudent = this.remStudent.bind(this);
     this.getData = this.getData.bind(this);
-    this.submitForm = this.submitForm.bind(this);
 
     this.students = new Map();
     for (let i = 0; i < 4; i++) {
@@ -28,6 +27,7 @@ class FormContainer extends Component {
       showdata: this.students,
       fullName: "",
       grade: "",
+      result: false,
     };
   }
 
@@ -40,6 +40,7 @@ class FormContainer extends Component {
         showdata: prevState.showdata,
         fullName: fullName,
         grade: grade,
+        result: false,
       };
     });
   };
@@ -68,10 +69,6 @@ class FormContainer extends Component {
     });
   }
 
-  submitForm() {
-    return <DisplayData name={this.state.fullName} grd={this.state.grade} />;
-  }
-
   render() {
     return (
       <div id="mainContainer" className="App">
@@ -88,12 +85,11 @@ class FormContainer extends Component {
           data={Array.from(this.students.values())}
         />
 
-        <button
-          className="btn btn-success btn-lg btn-block mt-4"
-          onClick={this.submitForm}
-        >
+        <button className="btn btn-success btn-lg btn-block mt-4">
           Submit
         </button>
+        <p>{this.state.fullName}</p>
+        <p>{this.state.grade}</p>
       </div>
     );
   }

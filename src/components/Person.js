@@ -13,6 +13,7 @@ export default class Person extends Component {
   }
 
   sendData() {
+    console.log("tip tip barsa paani ");
     this.props.callback(this.state);
   }
 
@@ -56,7 +57,6 @@ export default class Person extends Component {
         >
           Delete
         </button>
-        <button onClick={this.sendData}>TEST</button>
       </div>
     );
   }
