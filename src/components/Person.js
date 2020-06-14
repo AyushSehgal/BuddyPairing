@@ -13,12 +13,12 @@ export default class Person extends Component {
   }
 
   sendData() {
-    console.log("tip tip barsa paani ");
     this.props.callback(this.state);
   }
 
   handleChange(event) {
     const { name, value } = event.target;
+    console.log("hello: ", name, [name], value);
     this.setState({
       [name]: value,
     });
