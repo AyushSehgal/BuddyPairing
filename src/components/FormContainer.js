@@ -4,7 +4,6 @@ import "../style.css";
 
 import Person from "../components/Person";
 import TotalDisplay from "./TotalDisplay";
-import Results from "./Results";
 
 class FormContainer extends Component {
   constructor() {
@@ -13,7 +12,6 @@ class FormContainer extends Component {
     this.addStudent = this.addStudent.bind(this);
     this.remStudent = this.remStudent.bind(this);
     this.getData = this.getData.bind(this);
-    this.submitData = this.submitData.bind(this);
 
     this.students = new Map();
     for (let i = 0; i < 4; i++) {
@@ -28,7 +26,6 @@ class FormContainer extends Component {
       showdata: this.students,
       fullName: "",
       grade: "",
-      result: false,
     };
   }
 
@@ -41,21 +38,9 @@ class FormContainer extends Component {
         showdata: prevState.showdata,
         fullName: fullName,
         grade: grade,
-        result: false,
       };
     });
   };
-
-  submitData() {
-    this.setState((prevState) => {
-      return {
-        showdata: prevState.showdata,
-        fullName: prevState.fullName,
-        grade: prevState.grade,
-        result: !prevState.result,
-      };
-    });
-  }
 
   addStudent() {
     this.total += 1;
@@ -97,13 +82,9 @@ class FormContainer extends Component {
           data={Array.from(this.students.values())}
         />
 
-        <button
-          className="btn btn-success btn-lg btn-block mt-4"
-          onClick={this.submitData}
-        >
+        <button className="btn btn-success btn-lg btn-block mt-4">
           Submit
         </button>
-        {this.state.result && <Results data={this.state} />}
       </div>
     );
   }
