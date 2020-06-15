@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 
+import update from "immutability-helper";
+
 export default class Person extends Component {
   constructor() {
     super();
+    this.newName = "";
     this.state = {
       fullName: "",
       grade: "",
@@ -18,10 +21,22 @@ export default class Person extends Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    console.log("hello: ", name, [name], value);
-    this.setState({
-      [name]: value,
-    });
+    var newState = {};
+
+    if (name === "fullName") {
+      this.newName = name + this.props.id;
+      newState = update(this.state, {
+        [this.newName]: { $set: value },
+      });
+      this.setState(newState);
+    } else if (name === "grade") {
+      this.newGrade = name + this.props.id;
+      newState = update(this.state, {
+        [this.newGrade]: { $set: value },
+      });
+      this.setState(newState);
+    }
+
     this.sendData();
   }
 
@@ -33,15 +48,10 @@ export default class Person extends Component {
           name="fullName"
           placeholder="Full Name"
           className="m-1"
-          value={this.state.fullName}
+          // value={this.state.fullName}
           onChange={this.handleChange}
         />
-        <select
-          name="grade"
-          value={this.state.grade}
-          className="m-1"
-          onChange={this.handleChange}
-        >
+        <select name="grade" className="m-1" onChange={this.handleChange}>
           <option value="">-- Please Choose a Grade Level --</option>
           <option value="freshman">Freshman</option>
           <option value="sophomore">Sophomore</option>
