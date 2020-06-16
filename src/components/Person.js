@@ -17,9 +17,7 @@ export default class Person extends Component {
   }
 
   sendData() {
-    const labeN = [this.newName];
-    const labeG = [this.newGrade];
-    this.props.callback(this.state, this.newName, this.newGrade);
+    this.props.callback(this.state);
   }
 
   handleChange(event) {

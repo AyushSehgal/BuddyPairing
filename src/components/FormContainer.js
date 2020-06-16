@@ -4,6 +4,7 @@ import "../style.css";
 
 import Person from "../components/Person";
 import TotalDisplay from "./TotalDisplay";
+import DataDisplay from "./DataDisplay";
 
 class FormContainer extends Component {
   constructor() {
@@ -27,17 +28,10 @@ class FormContainer extends Component {
     };
   }
 
-  getData = (childState, nameLabel, gradeLabel) => {
-    const fullName = childState.fullName;
-    const grade = childState.grade;
-
-    this.setState((prevState) => {
-      return {
-        showdata: prevState.showdata,
-        [nameLabel]: fullName,
-        [gradeLabel]: grade,
-      };
-    });
+  getData = (childState) => {
+    console.log(childState.fullName2);
+    this.setState(childState);
+    console.log(this.state);
   };
 
   addStudent() {
@@ -83,6 +77,11 @@ class FormContainer extends Component {
         <button className="btn btn-success btn-lg btn-block mt-4">
           Submit
         </button>
+
+        <div>
+          <h1>{this.state.fullName3}</h1>
+          <h1>{this.state.grade3}</h1>
+        </div>
       </div>
     );
   }
