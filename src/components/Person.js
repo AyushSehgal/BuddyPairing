@@ -7,6 +7,7 @@ export default class Person extends Component {
   constructor() {
     super();
     this.newName = "";
+    this.newGrade = "";
     this.state = {
       fullName: "",
       grade: "",
@@ -16,7 +17,9 @@ export default class Person extends Component {
   }
 
   sendData() {
-    this.props.callback(this.state);
+    const labeN = [this.newName];
+    const labeG = [this.newGrade];
+    this.props.callback(this.state, this.newName, this.newGrade);
   }
 
   handleChange(event) {

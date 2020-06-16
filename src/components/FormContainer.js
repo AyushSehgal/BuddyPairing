@@ -27,17 +27,15 @@ class FormContainer extends Component {
     };
   }
 
-  getData = (childState) => {
-    const fullName = childState.fullName5;
-    const grade = childState.grade5;
-
-    console.log("I have crossed to the other side sir");
-    console.log(this.total);
-    console.log(fullName, grade);
+  getData = (childState, nameLabel, gradeLabel) => {
+    const fullName = childState.fullName;
+    const grade = childState.grade;
 
     this.setState((prevState) => {
       return {
         showdata: prevState.showdata,
+        [nameLabel]: fullName,
+        [gradeLabel]: grade,
       };
     });
   };
