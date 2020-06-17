@@ -1,17 +1,16 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
 class DataDisplay extends Component {
   constructor() {
     super();
-    this.state = {
-      data: this.props.info,
-    };
   }
   render() {
     return (
       <div>
-        {/* <h1 className="mt-4 mb-4">Groupings</h1> */}
-        {this.state.data}
+        <h1 className="mt-4 mb-4">Groupings</h1>
+        {this.props.data}
+        {/* {ReactDOM.render(<p>{}</p>, document.getElementById("0!"))} */}
       </div>
     );
   }

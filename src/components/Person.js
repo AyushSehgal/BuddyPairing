@@ -51,6 +51,7 @@ export default class Person extends Component {
           className="m-1"
           // value={this.state.fullName}
           onChange={this.handleChange}
+          ref={(x) => (this._input = x)}
         />
         <select name="grade" className="m-1" onChange={this.handleChange}>
           <option value="">-- Please Choose a Grade Level --</option>

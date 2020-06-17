@@ -29,9 +29,7 @@ class FormContainer extends Component {
   }
 
   getData = (childState) => {
-    console.log(childState.fullName2);
     this.setState(childState);
-    console.log(this.state);
   };
 
   addStudent() {
@@ -78,10 +76,7 @@ class FormContainer extends Component {
           Submit
         </button>
 
-        <div>
-          <h1>{this.state.fullName3}</h1>
-          <h1>{this.state.grade3}</h1>
-        </div>
+        {/* <DataDisplay data={this.state.showdata} /> */}
       </div>
     );
   }
