@@ -7,22 +7,29 @@ class Container extends Component {
   constructor() {
     super();
     this.getData = this.getData.bind(this);
-    this.info = []; // will store all the data from student components
     this.state = {
       students: [],
     };
   }
 
   getData(data) {
-    this.info.push(data);
-    this.setState((prevState) => ({ students: prevState.students.push(data) }));
+    this.setState({ students: this.state.students.concat(data) });
   }
   render() {
     return (
       <div className="App">
         <Student callback={this.getData} />
         <h1>Students</h1>
-        {/* {console.log(this.state.students)} */}
+        {this.state.students.map((value, index) => (
+          <div key={index}>
+            <div className="card" style={{ width: "18rem", margin: "auto" }}>
+              <h6 className="card-title">{value.name}</h6>
+              <p className="card-text">{value.grade}</p>
+              <button className="btn btn-secondary btn-md">Edit</button>
+            </div>
+            <br />
+          </div>
+        ))}
       </div>
     );
   }
