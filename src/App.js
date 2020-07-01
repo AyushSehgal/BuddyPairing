@@ -4,11 +4,13 @@ import "./style.css";
 import FormContainer from "./components/FormContainer";
 import TestContainer from "./components/TestContainer";
 
+import Container from "./components/Container";
+
 function App() {
   return (
     <div>
       <header className="App-header">Buddy System Pairing</header>
-      <FormContainer />
+      <Container />
     </div>
   );
 }
